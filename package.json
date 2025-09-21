@@ -26,7 +26,7 @@
     "typescript-eslint": "^8.35.0"
   },
   "dependencies": {
-    "@fcjs/core": "^1.0.0-beta.1",
+    "@fcjs/core": "^1.1.0",
     "@scalar/express-api-reference": "^0.8.7",
     "express": "^5.1.0",
     "fast-glob": "^3.3.3",
