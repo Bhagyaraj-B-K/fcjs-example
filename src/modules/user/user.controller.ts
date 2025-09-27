@@ -7,7 +7,6 @@ import {
   QueryDto,
   ResponseDto,
   Route,
-  Typecast,
 } from '@fcjs/core';
 
 import { UserService } from './services/user.service.js';
@@ -27,8 +26,8 @@ export default class UserController {
   @ResponseDto(getAllUsersResponseDto)
   @QueryDto(getAllUsersQueryDto)
   public async getAllUsers(req: Request) {
-    const { limit, offset } = new Typecast(req.query).to(getAllUsersQueryDto);
-    return this.userService.getAllUsers(limit, offset);
+    const query = getAllUsersQueryDto.parse(req.query);
+    return this.userService.getAllUsers(query.limit, query.offset);
   }
 
   @Post('/')
