@@ -1,6 +1,7 @@
 import { Request } from 'express';
 import {
   BodyDto,
+  Delete,
   Get,
   Middleware,
   Post,
@@ -44,5 +45,11 @@ export default class UserController {
   public async getUserById(req: Request) {
     const user = await this.userService.getUserById(+req.params.id);
     return user;
+  }
+
+  @Delete('/:id')
+  @Middleware(authMiddleware)
+  public async deleteUser(req: Request) {
+    await this.userService.deleteUser(+req.params.id);
   }
 }
